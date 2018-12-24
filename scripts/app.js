@@ -3,6 +3,10 @@
 const app = (function (){
   // State modification functions
   function generateSquare(square){
+    // if square.winner === true , 
+    // give it the class ofwinner from ccsss
+
+
     if(square.played === 0){
       return `<div class="cell" id="${square.position}">
                 <p> X </p>
@@ -30,7 +34,20 @@ const app = (function (){
   }
 
   function checkForWinner(){
-    //  a bunch of or statements
+    if( state.board[0,1,2].played === 1, or 0)
+    if (state.board[0].played === state.board[1].played === state.board[2].played && state.board[2].played !== null ){
+      
+    }
+
+
+    // [3,4,5],
+    // [6,7,8],
+    // [0,3,6],
+    // [1,4,7],
+    // [2,5,8],
+    // [0,4,8],
+    // [2,4,6],
+
   }
 
 
