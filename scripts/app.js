@@ -46,7 +46,6 @@ const app = (function (){
   }
 
   function handleClickedSquare(){
-    
     // target the clicked item, 
     $('.board').on('click', '.cell', (event) => {
       console.log(event.currentTarget());

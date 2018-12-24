@@ -33,7 +33,11 @@ const state = (function(){
     } 
   };
 
-  
+  const resetBoard = function(){
+    this.turn = true;
+    this.winner = false;
+    this.board.map(square => square.played = null);
+  };
  
   const board =[
     // position : 0 == X
@@ -66,6 +70,7 @@ const state = (function(){
     
     toggleTurn,
     updateSquare,
+    resetBoard,
  
   };
   
