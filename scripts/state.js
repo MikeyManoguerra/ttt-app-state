@@ -16,13 +16,29 @@ const state = (function(){
     state.turn = !state.turn;
   };
   
-  const updateSquare = function(){
+  const updateSquare = function(num){
+    const square = findByPosition(num);
+    if(square.played === null && this.turn === true){
+      square.played = 0;
+      toggleTurn();
+    }
+    if(square.played === null && this. turn === false){
+      square.played = 1;
+      toggleTurn();
+    }
+    if (square.played !== null){
+      return;
+      // perhaps logg an error that times out after 
+      // a few seconds. that would be cool.
+    }
    
 
 
   };
  
   const board =[
+    // position : 0 == X
+    // position : 1 == O
     { position : 0,
       played : null },
     { position : 1,
@@ -51,7 +67,7 @@ const state = (function(){
     
     toggleTurn,
     updateSquare,
-    findByPosition,
+ 
   };
   
 })();
