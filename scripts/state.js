@@ -1,13 +1,25 @@
 'use strict';
 const state = (function(){  
+
+  const findByPosition  = function(num) {
+    console.log(num);
+    for(let square in this.board) {
+      console.log(square);
+      if(square.positon === num){
+        console.log(square);
+        return square;
+      }
+    }
+  };
  
   const toggleTurn = function(){
     state.turn = !state.turn;
   };
   
   const updateSquare = function(){
-    // finds the square in board array, places a number 
-    //  in that square, runs toggleTurn
+   
+
+
   };
  
   const board =[
@@ -39,7 +51,7 @@ const state = (function(){
     
     toggleTurn,
     updateSquare,
-
+    findByPosition,
   };
   
 })();
