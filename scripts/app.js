@@ -4,17 +4,17 @@ const app = (function (){
   // State modification functions
   function generateSquare(square){
     if(square.played === 0){
-      return `<div class="cell" id="${state.position}">
+      return `<div class="cell" id="${square.position}">
                 <p> X </p>
                 </div>`;
     }
     if(square.played === 1){
-      return `<div class="cell" id="${state.position}">
+      return `<div class="cell" id="${square.position}">
                  <p> O </p>
                   </div>`;
     } 
     if(square.played === null){
-      return `<div class="cell" id="${state.position}">
+      return `<div class="cell" id="${square.position}">
                 <p> &nbsp; </p>
                 </div>`; 
     }
@@ -40,6 +40,7 @@ const app = (function (){
     } 
     const board =state.board;
     const boardHtml = generateBoardString(board);
+    console.log(boardHtml);
     $('.board').html(boardHtml);
     //  have to render board with rows  <div class="row">
     
