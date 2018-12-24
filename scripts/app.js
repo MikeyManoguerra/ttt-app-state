@@ -21,11 +21,12 @@ const app = (function (){
   }
   
   function generateBoardString(board){
-    const htmlArray = board.map(square =>{
-      return generateSquare(square);
-    });
-    const htmlString = '';
-    return htmlString.concat(htmlArray);
+    const htmlArray = board.map(square => generateSquare(square));
+    const row = '<div class="row">';
+    htmlArray.splice(6,0,row);
+    htmlArray.splice(3,0,row);
+    htmlArray.splice(0,0,row);
+    return htmlArray.join('');
   }
 
   function checkForWinner(){
