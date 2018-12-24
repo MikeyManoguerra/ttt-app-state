@@ -41,24 +41,21 @@ const app = (function (){
     } 
     const board =state.board;
     const boardHtml = generateBoardString(board);
-    console.log(boardHtml);
     $('.board').html(boardHtml);
   }
 
   function handleClickedSquare(){
-    // target the clicked item, 
     $('.board').on('click', '.cell', (event) => {
-      console.log(event.currentTarget());
-      // retrieve the iD
-      const position = $(this).attr('id').val();
-      console.log(typeof position);
-      //  pass that to state module      
+      const position = $(event.currentTarget).attr('id'); 
       state.updateSquare(position);
       renderBoard();
     });
   }
   function handleNewGame() {
-    // new game button clicked, reset board 
+    $('.controls').on('click', '#new-game', () => {
+      state.resetBoard();
+      renderBoard();
+    });
   }
 
   function bindEventListeners(){

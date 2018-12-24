@@ -1,44 +1,5 @@
 'use strict';
 const state = (function(){  
-
-  const findByPosition  = function(num) {
-    console.log(num);
-    for(let square in this.board) {
-      console.log(square);
-      if(square.positon === num){
-        console.log(square);
-        return square;
-      }
-    }
-  };
- 
-  const toggleTurn = function(){
-    state.turn = !state.turn;
-  };
-  
-  const updateSquare = function(num){
-    const square = findByPosition(num);
-    if(square.played === null && this.turn === true){
-      square.played = 0;
-      toggleTurn();
-    }
-    if(square.played === null && this. turn === false){
-      square.played = 1;
-      toggleTurn();
-    }
-    if (square.played !== null){
-      return;
-      // perhaps logg an error that times out after 
-      // a few seconds. that would be cool.
-    } 
-  };
-
-  const resetBoard = function(){
-    this.turn = true;
-    this.winner = false;
-    this.board.map(square => square.played = null);
-  };
- 
   const board =[
     // position : 0 == X
     // position : 1 == O
@@ -60,9 +21,45 @@ const state = (function(){
       played : null },
     { position : 8,
       played : null },
-    
   ];
 
+  const findByPosition  = function(num) {
+    for(let i = 0; i < state.board.length; i ++){
+      const square = state.board[i];
+      if(square.position === Number(num)){
+        console.log(square);
+        return square;
+      }
+    }
+  };
+ 
+  const toggleTurn = function(){
+    state.turn = !state.turn;
+  };
+  
+  const updateSquare = function(num){
+    const square = findByPosition(num);
+    if(square.played === null && state.turn === true){
+      square.played = 0;
+      toggleTurn();
+    }
+    if(square.played === null && state.turn === false){
+      square.played = 1;
+      toggleTurn();
+    }
+    if (square.played !== null){
+      return;
+      // perhaps logg an error that times out after 
+      // a few seconds. that would be cool.
+    } 
+  };
+
+  const resetBoard = function(){
+    this.turn = true;
+    this.winner = false;
+    this.board.map(square => square.played = null);
+  };
+ 
   return{
     board,
     turn : true, // true is 'x', false is 'o'
