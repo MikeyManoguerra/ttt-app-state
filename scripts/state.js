@@ -30,11 +30,10 @@ const state = (function(){
       return;
       // perhaps logg an error that times out after 
       // a few seconds. that would be cool.
-    }
-   
-
-
+    } 
   };
+
+  
  
   const board =[
     // position : 0 == X

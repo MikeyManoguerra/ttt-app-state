@@ -43,14 +43,28 @@ const app = (function (){
     const boardHtml = generateBoardString(board);
     console.log(boardHtml);
     $('.board').html(boardHtml);
-    //  have to render board with rows  <div class="row">
-    
   }
 
+  function handleClickedSquare(){
+    
+    // target the clicked item, 
+    $('.board').on('click', '.cell', (event) => {
+      console.log(event.currentTarget());
+      // retrieve the iD
+      const position = $(this).attr('id').val();
+      console.log(typeof position);
+      //  pass that to state module      
+      state.updateSquare(position);
+      renderBoard();
+    });
+  }
+  function handleNewGame() {
+    // new game button clicked, reset board 
+  }
 
-  // Render functions
   function bindEventListeners(){
- 
+    handleClickedSquare();
+    handleNewGame();
 
   }
 
