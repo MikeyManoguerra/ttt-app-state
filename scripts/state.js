@@ -36,7 +36,6 @@ const state = (function(){
     for(let i = 0; i < state.board.length; i ++){
       const square = state.board[i];
       if(square.position === Number(num)){
-        console.log(square);
         return square;
       }
     }
@@ -47,26 +46,30 @@ const state = (function(){
   };
   
   const updateSquare = function(num){
-    const square = findByPosition(num);
-    if(square.played === null && state.turn === true){
-      square.played = 0;
-      toggleTurn();
-    }
-    if(square.played === null && state.turn === false){
-      square.played = 1;
-      toggleTurn();
-    }
-    if (square.played !== null){
-      return;
+    if(state.winner !== true){
+      const square = findByPosition(num);
+      if(square.played === null && state.turn === true){
+        square.played = 0;
+        toggleTurn();
+      }
+      if(square.played === null && state.turn === false){
+        square.played = 1;
+        toggleTurn();
+      }
+      if (square.played !== null){
+        return;
       // perhaps logg an error that times out after 
       // a few seconds. that would be cool.
-    } 
+      } 
+    }
   };
 
   const resetBoard = function(){
     this.turn = true;
     this.winner = false;
-    this.board.map(square => square.played = null);
+    this.board.map(square => {
+      square.played = null;
+      square.winner = null;});
   };
  
   return{

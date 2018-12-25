@@ -42,61 +42,72 @@ const app = (function (){
     htmlArray.splice(0,0,row);
     return htmlArray.join('');
   }
-  // board[0].played === board[1].played && board[1].played === board[2].played
   function checkForWinner(){
-    console.log('checkforwinner ran');
     const board =state.board;
-    if (board[0].played === board[1].played === board[2].played
+    if (  board[0].played === board[1].played 
+      && board[1].played === board[2].played
       && board[2].played !== null ){
-        console.log('winner', state.winner);
       board[0].winner = true;
       board[1].winner = true;
-      board[2].winner = true; }
-    if (board[3].played === board[4].played === board[5].played
+      board[2].winner = true;
+      state.winner = true; }
+    if (board[3].played === board[4].played
+      && board[4].played === board[5].played
       && board[5].played !== null ){
       board[3].winner = true;
       board[4].winner = true;
-      board[5].winner = true; }  
-    if (board[0].played === board[3].played === board[6].played
+      board[5].winner = true;
+      state.winner = true; }  
+    if (board[0].played === board[3].played
+      &&board[3].played === board[6].played
       && board[6].played !== null ){
       board[0].winner = true;
       board[3].winner = true;
-      board[6].winner = true; }
-    if (board[1].played === board[4].played === board[7].played
+      board[6].winner = true;
+      state.winner = true; }
+    if (board[1].played === board[4].played
+      &&board[4].played === board[7].played
         && board[7].played !== null ){
       board[1].winner = true;
       board[4].winner = true;
-      board[7].winner = true; }        
-    if (board[2].played === board[5].played === board[8].played
+      board[7].winner = true;
+      state.winner = true; }        
+    if (board[2].played === board[5].played
+      &&board[5].played === board[8].played
       && board[5].played !== null ){
       board[2].winner = true;
       board[5].winner = true;
-      board[8].winner = true; }
-    if (board[0].played === board[4].played === board[8].played
+      board[8].winner = true;
+      state.winner = true; }
+    if (board[0].played === board[4].played
+      &&board[4].played === board[8].played
       && board[8].played !== null ){
       board[0].winner = true;
       board[4].winner = true;
-      board[8].winner = true; }   
-    if (board[2].played === board[4].played === board[6].played
+      board[8].winner = true;
+      state.winner = true; }   
+    if (board[2].played === board[4].played
+      &&board[4].played === board[6].played
       && board[6].played !== null ){
       board[2].winner = true;
       board[4].winner = true;
-      board[6].winner = true; }   
-    if (board[6].played === board[7].played === board[8].played
+      board[6].winner = true;
+      state.winner = true; }   
+    if (board[6].played === board[7].played
+      &&board[7].played === board[8].played
       && board[8].played !== null ){
       board[6].winner = true;
       board[7].winner = true;
-      board[8].winner = true; } 
+      board[8].winner = true;
+      state.winner = true; } 
     else return false;  
   }
 
 
   function renderBoard() {
     console.log ('render ran');
-   const winnerCheck = checkForWinner();
-    if(winnerCheck !==false){
-      state.winner = true;
-    }
+    checkForWinner();
+    console.log(state.winner);
     const board =state.board;
     const boardHtml = generateBoardString(board);
     $('.board').html(boardHtml);
